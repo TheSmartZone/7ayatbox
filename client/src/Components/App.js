@@ -8,6 +8,7 @@ import SignIn from "../Components/SignIn/SignIn";
 import Budget from "../Components/Categories/Budget/Budget";
 import ViewCategories from "../Components/Categories/ViewCategories/ViewCategories";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Cart from "../Components/Categories/Cart/Cart"
 
 class App extends Component {
   constructor(props) {
@@ -45,6 +46,7 @@ class App extends Component {
             <Route exact path="/Categories" component={Categories} />
             <Route exact path="/budget" component={Budget} />
             <Route exact path="/ViewCategories" component={ViewCategories} />
+            <Route exact path="/Cart" component={Cart} />
           </Switch>
         </BrowserRouter>
         <Footer />

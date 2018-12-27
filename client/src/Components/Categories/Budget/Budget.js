@@ -15,10 +15,10 @@ class Budget extends Component {
     this.setState({ value: event.target.value });
   }
 
-  handleSubmit = event => {
+  handleSubmit(event) {
     alert("Your Budget : " + this.state.value);
     event.preventDefault();
-  };
+  }
   // state = {
   //     value: {
   //         hall: '',

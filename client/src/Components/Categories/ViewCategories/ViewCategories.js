@@ -6,9 +6,9 @@ class ViewCategories extends Component {
     super(props);
     this.state = { text: "" };
   }
+  
 
   render() {
-    // eslint-disable-next-line no-lone-blocks
     {
       return (
         <div class="container">
@@ -23,7 +23,6 @@ class ViewCategories extends Component {
                       class="card-img-top"
                       alt="Card image"
                     />
-
                     <div class="card-block text-left">
                       <h4 class="card-title">This is a title</h4>
                       <p class="card-text">
@@ -33,14 +32,23 @@ class ViewCategories extends Component {
                         target.
                       </p>
                       <Link
-                        to={{
-                          pathname: "/",
-                          query: this.state.value
-                        }}
+                          to={{
+                            pathname: "/",
+                            query: this.state.value
+                          }}
                       >
+                      <div>
                         <button className="detailsBTN btn btn-primary">
                           More Details
                         </button>
+                      </div>
+                      </Link>
+                      <Link
+                          to={{
+                                pathname:"/Cart"
+                              }}
+                      >
+                        <button type="button" className="btn btn-danger addToCartBtn">Add to Wishlist</button>
                       </Link>
                     </div>
                   </div>
