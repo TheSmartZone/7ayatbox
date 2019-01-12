@@ -39,7 +39,7 @@ class Cart extends Component {
         console.log("success", data);
         setTimeout(() => {
           this.props.resetCounter();
-          this.props.history.push("/AboutUs");
+          this.props.history.push("/cardsTemplates");
         }, 2500);
       },
       error: err => {

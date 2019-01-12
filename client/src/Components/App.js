@@ -11,6 +11,8 @@ import ContactUs from "../Components/ContactUs/ContactUs";
 import AboutUs from "./AboutUs/ِAboutUs";
 import Login from "./Auth/Login";
 import SignUp from "./Auth/SignUp";
+import weddingCard from "./weddingCard/weddingCard"
+import cardsTemplates from "./weddingCard/cardsTemplates"
 import ProviderServices from "./Provider/ProviderServices/ProviderServices";
 
 import UserReservation from "./UserReservation/UserReservation";
@@ -37,6 +39,8 @@ class App extends Component {
             <Route exact path="/signup" component={SignUp} />
             <Route exact path="/ContactUs" component={ContactUs} />
             <Route exact path="/AboutUs" component={AboutUs} />
+            <Route exact path="/weddingCard" component={weddingCard} />
+            <Route exact path="/cardsTemplates" component={cardsTemplates} />
             <Route
               exact
               path="/ProviderServices"
