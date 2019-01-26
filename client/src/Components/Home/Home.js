@@ -29,48 +29,12 @@ class Home extends Component {
       flowers: Math.ceil(e.target.value * 0.05),
       cars: Math.ceil(e.target.value * 0.03)
     });
-    console.log(this.state);
   };
-  changeHandlerHall = e => {
+  onChangeHandler = e => {
     this.setState({
-      halls: Number(e.target.value)
+      [e.target.name]: e.target.value
     });
-    console.log("hall", this.state);
   };
-  changeHandlerDj = e => {
-    this.setState({
-      djs: e.target.value
-    });
-    console.log("dj", this.state);
-  };
-
-  changeHandlerZafeh = e => {
-    this.setState({
-      zafehs: e.target.value
-    });
-    console.log("zafeh", this.state);
-  };
-
-  changeHandlerFlower = e => {
-    this.setState({
-      flowers: e.target.value
-    });
-    console.log("flower", this.state);
-  };
-
-  changeHandlerCar = e => {
-    this.setState({
-      cars: e.target.value
-    });
-    console.log("car", this.state);
-  };
-  changeHandlerBeauty = e => {
-    this.setState({
-      beautys: e.target.value
-    });
-    console.log("b", this.state);
-  };
-
   render() {
     return (
       <div>
@@ -192,7 +156,8 @@ class Home extends Component {
                       </label>
                       <input
                         type="Number"
-                        onChange={this.changeHandlerHall}
+                        name="halls"
+                        onChange={this.onChangeHandler}
                         defaultValue={this.state.halls}
                         className="form-control"
                         id="formGroupExampleInput"
@@ -200,7 +165,8 @@ class Home extends Component {
                       <label htmlFor="formGroupExampleInput">DJ Budget</label>
                       <input
                         type="Number"
-                        onChange={this.changeHandlerDj}
+                        name="djs"
+                        onChange={this.onChangeHandler}
                         defaultValue={this.state.djs}
                         className="form-control"
                         id="formGroupExampleInput"
@@ -209,8 +175,9 @@ class Home extends Component {
                         Zafeh Budget{" "}
                       </label>
                       <input
+                        name="zafehs"
                         type="Number"
-                        onChange={this.changeHandlerZafeh}
+                        onChange={this.onChangeHandler}
                         defaultValue={this.state.zafehs}
                         className="form-control"
                         id="formGroupExampleInput"
@@ -220,7 +187,8 @@ class Home extends Component {
                       </label>
                       <input
                         type="Number"
-                        onChange={this.changeHandlerBeauty}
+                        name="beautys"
+                        onChange={this.onChangeHandler}
                         defaultValue={this.state.beautys}
                         className="form-control"
                         id="formGroupExampleInput"
@@ -229,7 +197,8 @@ class Home extends Component {
                       <label htmlFor="formGroupExampleInput">Car Budget</label>
                       <input
                         type="Number"
-                        onChange={this.changeHandlerCar}
+                        name="cars"
+                        onChange={this.onChangeHandler}
                         defaultValue={this.state.cars}
                         className="form-control"
                         id="formGroupExampleInput"
@@ -239,7 +208,8 @@ class Home extends Component {
                       </label>
                       <input
                         type="Number"
-                        onChange={this.changeHandlerFlower}
+                        name="flowers"
+                        onChange={this.onChangeHandler}
                         defaultValue={this.state.flowers}
                         className="form-control"
                         id="formGroupExampleInput"
@@ -286,7 +256,6 @@ class Home extends Component {
             </div>
           </div>
         </header>
-
         <About />
       </div>
     );

@@ -20,6 +20,7 @@ class Nav extends Component {
     axios.post("/user/logout").then(response => {
       console.log(response.data, response.status);
       if (response.status === 200) {
+        this.props.user = null;
       }
     });
   };
@@ -57,6 +58,7 @@ class Nav extends Component {
   }
 
   render() {
+    console.log("2", this.props.user);
     return (
       <div>
         <div className="container-fluid headerNav-container">
@@ -146,34 +148,62 @@ class Nav extends Component {
                 </ul>
               </div>
             </li>
-            <li id="navProvider">
+            <li
+              id="navProvider"
+              style={{
+                display: Object.keys(this.props.user).length ? "none" : "block"
+              }}
+            >
               <Link to={{ pathname: "/login", query: "provider" }}>
                 Become a Provider
               </Link>
             </li>
 
-            <li className="My-reservation">
-              {" "}
+            <li
+              className="My-reservation"
+              style={{
+                display: Object.keys(this.props.user).length ? "block" : "none"
+              }}
+            >
               <Link to={{ pathname: "/myreservation" }}>Reservations</Link>
             </li>
 
-            <li id="navLogin">
+            <li
+              id="navLogin"
+              style={{
+                display: Object.keys(this.props.user).length ? "none" : "block"
+              }}
+            >
               <Link to={{ pathname: "/login", query: "user" }}>Login</Link>
             </li>
 
-            <li id="cart-nav">
+            <li
+              id="cart-nav"
+              style={{
+                display: Object.keys(this.props.user).length ? "block" : "none"
+              }}
+            >
               <Link to={{ pathname: "/Cart" }}>
                 My Cart <mark>{this.props.counter}</mark>
               </Link>
             </li>
 
-            <li className="logout">
+            <li
+              className="logout"
+              style={{
+                display: Object.keys(this.props.user).length ? "block" : "none"
+              }}
+            >
               <a href="/" onClick={this.handleLogout}>
                 Logout
               </a>
             </li>
-            <li className="logedName">
-              {" "}
+            <li
+              className="logedName"
+              style={{
+                display: Object.keys(this.props.user).length ? "block" : "none"
+              }}
+            >
               <a>{this.props.user.name}</a>
             </li>
           </ul>

@@ -8,7 +8,6 @@ import Provider from "../Components/Provider/Provider";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Cart from "../Components/Cart/Cart";
 import ContactUs from "../Components/ContactUs/ContactUs";
-import AboutUs from "./AboutUs/ِAboutUs";
 import Login from "./Auth/Login";
 import SignUp from "./Auth/SignUp";
 import weddingCard from "./weddingCard/weddingCard";
@@ -31,7 +30,7 @@ class App extends Component {
       console.log(response.data);
       if (response.data.user) {
         console.log("Get User: There is a user saved in the server session: ");
-        this.props.logedin(response.data.user);
+        this.props.loggedIn(response.data.user);
       } else {
         console.log("Get user: no user");
       }
@@ -53,7 +52,6 @@ class App extends Component {
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={SignUp} />
             <Route exact path="/ContactUs" component={ContactUs} />
-            <Route exact path="/AboutUs" component={AboutUs} />
             <Route exact path="/weddingCard" component={weddingCard} />
             <Route exact path="/cardsTemplates" component={cardsTemplates} />
             <Route
@@ -78,7 +76,7 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    logedin: user => dispatch({ type: "logedin", value: user })
+    loggedIn: user => dispatch({ type: "loggedIn", value: user })
   };
 };
 export default connect(
