@@ -125,7 +125,7 @@ class Home extends Component {
                         data-target="#planmodal"
                         data-dismiss="modal"
                       >
-                        See your Plane
+                        View Plan
                       </button>
                     </div>
                   </div>
@@ -246,7 +246,7 @@ class Home extends Component {
                         }}
                       >
                         <button type="button" className="btn btnStart">
-                          what we recommend{" "}
+                          what we recommend
                         </button>
                       </Link>
                     </div>

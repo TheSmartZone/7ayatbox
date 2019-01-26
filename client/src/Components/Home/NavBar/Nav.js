@@ -26,7 +26,6 @@ class Nav extends Component {
   };
   componentDidMount() {
     $(document).ready(function() {
-      var sHeight = window.innerHeight;
       var y = $(window).scrollTop();
 
       //Scroll Effects

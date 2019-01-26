@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./ContactUs.css";
-import $ from "jquery";
+import axios from "axios";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 
 class ContactUs extends Component {
@@ -16,34 +16,25 @@ class ContactUs extends Component {
     };
   }
 
-  handleNameChange = event => {
-    this.setState({ name: event.target.value });
-  };
-
-  handlePhoneChange = event => {
-    this.setState({ phone: event.target.value });
-  };
-
-  handleMessageChange = event => {
-    this.setState({ message: event.target.value });
+  onchangeHandler = event => {
+    this.setState({ [event.target.name]: event.target.value });
   };
   handleSaveMessage = event => {
-    $.ajax({
-      url: `/contactus/submit`,
-      type: "POST",
+    axios({
+      method: "post",
+      url: "/contactus/submit",
       data: {
         name: this.state.name,
         phone: this.state.phone,
         message: this.state.message
-      },
-      success: data => {
-        alert("SUCCESS");
-        console.log("SUCCESS", data);
-      },
-      error: err => {
-        console.log("ERROR", err);
       }
-    });
+    })
+      .then(response => {
+        alert("SUCCESS");
+      })
+      .catch(error => {
+        console.log("contactUs ERROR", error);
+      });
   };
 
   onMarkerClick = (props, marker, e) =>
@@ -66,18 +57,6 @@ class ContactUs extends Component {
     return (
       //start div
       <div className="container">
-        <link
-          href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
-          rel="stylesheet"
-          id="bootstrap-css"
-        />
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js" />
-        <script src="//code.jquery.com/jquery-1.11.1.min.js" />
-        <link
-          rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-        />
-
         <div class="row">
           {/* Contact Us Form */}
           <div class="col-md-6">
@@ -102,7 +81,7 @@ class ContactUs extends Component {
                       name="name"
                       placeholder="Enter name"
                       required="required"
-                      onChange={this.handleNameChange}
+                      onChange={this.onchangeHandler}
                     />
                   </div>
 
@@ -114,7 +93,7 @@ class ContactUs extends Component {
                       name="phone"
                       placeholder="Enter phone"
                       required="required"
-                      onChange={this.handlePhoneChange}
+                      onChange={this.onchangeHandler}
                     />
                   </div>
 
@@ -128,7 +107,7 @@ class ContactUs extends Component {
                       cols="25"
                       required="required"
                       placeholder="Message"
-                      onChange={this.handleMessageChange}
+                      onChange={this.onchangeHandler}
                     />
                   </div>
 

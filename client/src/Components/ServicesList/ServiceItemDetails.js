@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./Reservation.css";
 
-class Reservation extends Component {
+class ServiceItemDetails extends Component {
   //add to cart
   addToCart = result => {
     this.props.incrementCounter();
@@ -60,4 +60,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Reservation);
+)(ServiceItemDetails);

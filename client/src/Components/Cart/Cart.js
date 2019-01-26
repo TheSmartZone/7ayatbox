@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Cart.css";
 import { connect } from "react-redux";
-import ReservationBot from "../Categories/Reservation/ReservationBot";
+import ReservationBot from "./ReservationBot";
 import ListCard from "../UserReservation/ListCard";
 import axios from "axios";
 class Cart extends Component {

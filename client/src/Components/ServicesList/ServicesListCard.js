@@ -56,7 +56,7 @@ class ServicesListCard extends React.Component {
 
             <Link
               to={{
-                pathname: "/reservation",
+                pathname: "/ServiceDetails",
                 query: this.props.result
               }}
             >

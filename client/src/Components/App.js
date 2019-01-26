@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import Home from "../Components/Home/Home";
 import Nav from "../Components/Home/NavBar/Nav";
-import Reservation from "../Components/Categories/Reservation/Reservation.js";
+import ServiceItemDetails from "../Components/ServicesList/ServiceItemDetails";
 import ServicesList from "../Components/ServicesList/ServicesList";
-import BudgetResult from "../Components/Categories/BudgetResult/BudgetResult";
+import BudgetResult from "../Components/BudgetResult/BudgetResult";
 import Provider from "../Components/Provider/Provider";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Cart from "../Components/Cart/Cart";
@@ -45,7 +45,11 @@ class App extends Component {
           <Switch>
             <Route exact path="/Provider" component={Provider} />
             <Route exact path="/" component={Home} />
-            <Route exact path="/Reservation" component={Reservation} />
+            <Route
+              exact
+              path="/ServiceDetails"
+              component={ServiceItemDetails}
+            />
             <Route exact path="/budgetresult" component={BudgetResult} />
             <Route exact path="/ServicesList" component={ServicesList} />
             <Route exact path="/Cart" component={Cart} />
