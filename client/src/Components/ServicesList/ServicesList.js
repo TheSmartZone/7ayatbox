@@ -3,8 +3,8 @@ import ServicesListCard from "./ServicesListCard";
 import "./ServicesList.css";
 import $ from "jquery";
 import { connect } from "react-redux";
-import ListCard from "../UserReservation/ListCard"
-class ViewCategories extends Component {
+import ListCard from "../UserReservation/ListCard";
+class ServicesList extends Component {
   constructor(props) {
     super(props);
     this.state = { result: [] };
@@ -30,29 +30,21 @@ class ViewCategories extends Component {
     });
   };
   render() {
-    console.log("abo shreef",this.props.user)
-    // eslint-disable-next-line no-lone-blocks
-    {
-      return (
-        <div className="container">
-
-          <h1>{this.props.location.query}</h1>
-        
-          <hr className="hr-header" />
-          <p className="signin-paragraph"> please sign in to to reserve</p>
-          <div className="row">
-     
-            {this.state.result.map((result, index) => {
-
-             return Object.keys( this.props.user).length>0? <ServicesListCard key={index} result={result} />:
-             <ListCard key={index} result={result} />
-           
-           })}
-            
-          </div>
+    return (
+      <div className="container">
+        <h1>{this.props.location.query}</h1>
+        <hr className="hr-header" />
+        <div className="row">
+          {this.state.result.map((result, index) => {
+            return Object.keys(this.props.user).length > 0 ? (
+              <ServicesListCard key={index} result={result} />
+            ) : (
+              <ListCard key={index} result={result} />
+            );
+          })}
         </div>
-      );
-    }
+      </div>
+    );
   }
 }
 const mapStateToProps = state => {
@@ -61,5 +53,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(ViewCategories);
-
+export default connect(mapStateToProps)(ServicesList);

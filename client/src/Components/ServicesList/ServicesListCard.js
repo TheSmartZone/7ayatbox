@@ -3,9 +3,8 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import "./ServicesList.css";
 import SweetAlert from "react-bootstrap-sweetalert";
-import $ from "jquery";
 
-class ViewCategoriesCard extends React.Component {
+class ServicesListCard extends React.Component {
   state = {
     qty: 0,
     result: "",
@@ -85,4 +84,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ViewCategoriesCard);
+)(ServicesListCard);

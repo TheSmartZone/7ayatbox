@@ -31,23 +31,11 @@ class Login extends Component {
       },
       success: data => {
         this.props.logedin(data);
-        $("#navProvider").hide();
-        $("#navLogin").hide();
-        $("#cart-nav").show();
-        $(".logout").show();
-
         if (this.props.location.query === "user") {
-          $(".cart-cta").show();
-          $(".cart-details").css("display", "block");
           this.props.history.goBack();
-
-          $(".My-reservation").show();
-          $(".logout").show();
-          $(".signin-paragraph").css("dispaly", "none");
         } else {
           this.props.history.push({
             pathname: "/provider",
-
             query: data.id
           });
           $("#cart-nav").hide();

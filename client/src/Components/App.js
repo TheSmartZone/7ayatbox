@@ -11,23 +11,38 @@ import ContactUs from "../Components/ContactUs/ContactUs";
 import AboutUs from "./AboutUs/ِAboutUs";
 import Login from "./Auth/Login";
 import SignUp from "./Auth/SignUp";
-import weddingCard from "./weddingCard/weddingCard"
-import cardsTemplates from "./weddingCard/cardsTemplates"
+import weddingCard from "./weddingCard/weddingCard";
+import cardsTemplates from "./weddingCard/cardsTemplates";
 import ProviderServices from "./Provider/ProviderServices/ProviderServices";
-
+import axios from "axios";
 import UserReservation from "./UserReservation/UserReservation";
+import { connect } from "react-redux";
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { text: "" };
+  constructor() {
+    super();
+    this.state = { render: false };
   }
-  componentDidMount() {}
+  componentWillMount() {
+    this.getUser();
+  }
+  getUser = () => {
+    axios.get("/user/").then(response => {
+      console.log("Get user response: ");
+      console.log(response.data);
+      if (response.data.user) {
+        console.log("Get User: There is a user saved in the server session: ");
+        this.props.logedin(response.data.user);
+      } else {
+        console.log("Get user: no user");
+      }
+      this.setState({ render: true });
+    });
+  };
   render() {
-    return (
+    return this.state.render ? (
       <BrowserRouter>
         <div>
           <Nav />
-
           <Switch>
             <Route exact path="/Provider" component={Provider} />
             <Route exact path="/" component={Home} />
@@ -48,12 +63,25 @@ class App extends Component {
             />
             <Route exact path="/myreservation" component={UserReservation} />
           </Switch>
-
-          {/* <Footer /> */}
         </div>
       </BrowserRouter>
+    ) : (
+      <div />
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    ctr: state
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    logedin: user => dispatch({ type: "logedin", value: user })
+  };
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

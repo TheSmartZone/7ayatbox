@@ -3,7 +3,7 @@ import "./Nav.css";
 import $ from "jquery";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-
+import axios from "axios";
 class Nav extends Component {
   constructor() {
     super();
@@ -15,34 +15,13 @@ class Nav extends Component {
       id: ""
     };
   }
-  handleSubmit = event => {
-    var obj = {
-      email: this.state.email,
-      password: this.state.password
-    };
 
-    $.ajax({
-      type: "POST",
-      url: "/provider/login",
-      data: {
-        email: obj.email,
-        password: obj.password
-      },
-      success: res => {
-        console.log(res);
-
-        if (res) {
-          console.log("in set state");
-          this.setState({
-            isLoggedIn: true,
-            name: res.name,
-            id: res.id
-          });
-        }
+  handleLogout = () => {
+    axios.post("/user/logout").then(response => {
+      console.log(response.data, response.status);
+      if (response.status === 200) {
       }
     });
-
-    event.preventDefault();
   };
   componentDidMount() {
     $(document).ready(function() {
@@ -189,7 +168,9 @@ class Nav extends Component {
             </li>
 
             <li className="logout">
-              <a href="/">Logout</a>
+              <a href="/" onClick={this.handleLogout}>
+                Logout
+              </a>
             </li>
             <li className="logedName">
               {" "}

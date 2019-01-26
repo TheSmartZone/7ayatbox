@@ -3,7 +3,6 @@ import "./Home.css";
 import "./About/About";
 import About from "./About/About";
 import { Link } from "react-router-dom";
-import $ from "jquery";
 
 class Home extends Component {
   constructor(props) {

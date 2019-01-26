@@ -1,3 +1,4 @@
+import $ from "jquery";
 const intialState = {
   counter: 0,
   result2: [],
@@ -25,6 +26,12 @@ const reducer = (state = intialState, action) => {
       result2: array
     };
   } else if (action.type === "logedin") {
+    $("#navProvider").hide();
+    $("#navLogin").hide();
+    $("#cart-nav").show();
+    $(".logout").show();
+    //if user
+    $(".My-reservation").show();
     return {
       ...state,
       user: action.value
