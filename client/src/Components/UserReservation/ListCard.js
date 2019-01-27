@@ -15,7 +15,6 @@ class ListCard extends React.Component {
             className="card-img-top"
             alt=""
           />
-
           <div className="card-block text-left">
             <h4 className="card-title">{this.props.result.title}</h4>
             <p className="card-text">{this.props.result.description}</p>

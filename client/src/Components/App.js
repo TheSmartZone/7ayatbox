@@ -4,7 +4,7 @@ import Nav from "../Components/Home/NavBar/Nav";
 import ServiceItemDetails from "../Components/ServicesList/ServiceItemDetails";
 import ServicesList from "../Components/ServicesList/ServicesList";
 import BudgetResult from "../Components/BudgetResult/BudgetResult";
-import Provider from "../Components/Provider/Provider";
+import ProviderDashboard from "./Provider/ProviderDashboard";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Cart from "../Components/Cart/Cart";
 import ContactUs from "../Components/ContactUs/ContactUs";
@@ -43,7 +43,7 @@ class App extends Component {
         <div>
           <Nav />
           <Switch>
-            <Route exact path="/Provider" component={Provider} />
+            <Route exact path="/dashboard" component={ProviderDashboard} />
             <Route exact path="/" component={Home} />
             <Route
               exact

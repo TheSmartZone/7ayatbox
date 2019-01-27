@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ServicesListCard from "./ServicesListCard";
 import "./ServicesList.css";
-import $ from "jquery";
+import axios from "axios";
 import { connect } from "react-redux";
 import ListCard from "../UserReservation/ListCard";
 class ServicesList extends Component {
@@ -10,6 +10,7 @@ class ServicesList extends Component {
     this.state = { result: [] };
   }
   componentDidUpdate(prevProps) {
+    //update UI based on the selected category from the drop down menu
     if (prevProps.location.query !== this.props.location.query) {
       this.getAllServices();
     }
@@ -18,16 +19,16 @@ class ServicesList extends Component {
     this.getAllServices();
   }
   getAllServices = () => {
-    $.ajax({
-      url: `/services/${this.props.location.query}`,
-      type: "GET",
-      success: data => {
+    axios({
+      method: "get",
+      url: `/services/${this.props.location.query}`
+    })
+      .then(({ data }) => {
         this.setState({ result: data });
-      },
-      error: err => {
-        console.log("ERROR");
-      }
-    });
+      })
+      .catch(err => {
+        console.log("ServiceList ERROR", err);
+      });
   };
   render() {
     return (

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import $ from "jquery";
-import "./Provider.css";
-import { Redirect, Link } from "react-router-dom";
+import axios from "axios";
+import "./ProviderDashboard.css";
+import { Link } from "react-router-dom";
 import { storage } from "../../firebase";
 import SweetAlert from "react-bootstrap-sweetalert";
-class Provider extends Component {
+class ProviderDashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -26,20 +26,19 @@ class Provider extends Component {
   }
 
   componentDidMount = () => {
-    console.log("i am in");
-    $.ajax({
+    axios({
+      method: "post",
       url: "/provider/getProviderServices",
-      type: "POST",
       data: {
         providerId: this.state.providerId
-      },
-      success: data => {
-        this.setState({ result: data });
-      },
-      error: err => {
-        console.log("ERROR");
       }
-    });
+    })
+      .then(({ data }) => {
+        this.setState({ result: data });
+      })
+      .catch(error => {
+        console.log("ERROR", error);
+      });
   };
 
   handleSubmitButtonClick = () => {
@@ -84,9 +83,9 @@ class Provider extends Component {
       title: this.state.title,
       capicity: this.state.capicity
     };
-    $.ajax({
+    axios({
+      method: "post",
       url: "/provider/addService",
-      type: "POST",
       data: {
         providerId: obj.providerId,
         categoryId: obj.categoryId,
@@ -97,46 +96,29 @@ class Provider extends Component {
         title: obj.title,
         capicity: obj.capicity,
         location: obj.location
-      },
-      success: data => {
-        console.log("success", data);
-
-        this.setState({ text: data.express });
-      },
-      error: err => {
-        console.log("ERROR");
       }
-    });
+    })
+      .then(({ data }) => {
+        this.setState({ text: data.express });
+      })
+      .catch(err => {
+        console.log("ERROR");
+      });
   };
 
-  ServiceHandleChange = event => {
-    this.setState({ categoryId: event.target.value });
+  onChangeHandler = event => {
+    this.setState({ [event.target.name]: event.target.value });
   };
-
-  titleHandleChange = event => this.setState({ title: event.target.value });
-  locationHandleChange = event =>
-    this.setState({ location: event.target.value });
-  imageHandleChange = event => this.setState({ imageUrl: event.target.value });
-  locationHandleChange = event =>
-    this.setState({ location: event.target.value });
-  descriptionHandleChange = event =>
-    this.setState({ description: event.target.value });
-  rateHandleChange = event => this.setState({ rate: event.target.value });
-  priceHandleChange = event => this.setState({ price: event.target.value });
-  capicityHandleChange = event =>
-    this.setState({ capicity: event.target.value });
 
   fileSelectedHandler = event => {
-    console.log("Ev", event.target.files[0]);
     this.setState({ image: event.target.files[0] });
-    console.log("Image", this.state);
   };
   render() {
     return (
       <div>
-        <div class="container-fluid page-cont">
-          <div class="row dash-row">
-            <div class="col-4 data-box">
+        <div className="container-fluid page-cont">
+          <div className="row dash-row">
+            <div className="col-4 data-box">
               <div>
                 <h3>
                   <Link
@@ -152,7 +134,7 @@ class Provider extends Component {
               </div>
             </div>
 
-            <div class="col-4 data-box">
+            <div className="col-4 data-box">
               <div>
                 <h3>
                   <span>7</span> Reservations
@@ -160,7 +142,7 @@ class Provider extends Component {
               </div>
             </div>
 
-            <div class="col-4 data-box">
+            <div className="col-4 data-box">
               <div>
                 <h3>
                   <span>3500 </span>JD Revenues
@@ -172,14 +154,13 @@ class Provider extends Component {
         <div className="container">
           <div className="row inputs">
             <div className="col-25">
-              <label for="fname">title</label>
+              <label htmlFor="fname">title</label>
             </div>
             <div className="col-75">
               <input
                 type="text"
-                onChange={this.titleHandleChange}
-                id="fname"
-                name="firstname"
+                onChange={this.onChangeHandler}
+                name="title"
                 placeholder="Your title.."
               />
             </div>
@@ -187,7 +168,7 @@ class Provider extends Component {
 
           <div className="row">
             <div className="col-25">
-              <label for="subject">Image</label>
+              <label htmlFor="subject">Image</label>
             </div>
             <div className="col-3 ">
               <div className="uploadImage">
@@ -204,12 +185,13 @@ class Provider extends Component {
           </div>
           <div className="row">
             <div className="col-25">
-              <label for="country">Service</label>
+              <label htmlFor="country">Service</label>
             </div>
             <div className="col-75">
               <select
+                name="categoryId"
                 value={this.state.value}
-                onChange={this.ServiceHandleChange}
+                onChange={this.onChangeHandler}
               >
                 <option value="1">Halls</option>
                 <option value="2">Zafeh</option>
@@ -223,14 +205,13 @@ class Provider extends Component {
 
           <div className="row">
             <div className="col-25">
-              <label for="subject">Price</label>
+              <label htmlFor="subject">Price</label>
             </div>
             <div className="col-75">
               <input
                 type="text"
-                onChange={this.priceHandleChange}
-                id="subject"
-                name="firstname"
+                onChange={this.onChangeHandler}
+                name="price"
                 placeholder="Your Price"
               />
             </div>
@@ -238,41 +219,25 @@ class Provider extends Component {
 
           <div className="row">
             <div className="col-25">
-              <label for="subject">Location</label>
+              <label htmlFor="subject">Location</label>
             </div>
             <div className="col-75">
               <input
                 type="text"
-                onChange={this.locationHandleChange}
-                id="subject"
-                name="firstname"
+                onChange={this.onChangeHandler}
+                name="location"
                 placeholder="Your Location"
               />
             </div>
           </div>
-          {/* <div className="row">
-            <div className="col-25">
-              <label for="subject">Rate</label>
-            </div>
-            <div className="col-75">
-              <input
-                type="text"
-                onChange={this.rateHandleChange}
-                id="subject"
-                name="firstname"
-                placeholder="Your Rate"
-              />
-            </div>
-          </div> */}
           <div className="row">
             <div className="col-25">
-              <label for="subject">Description</label>
+              <label htmlFor="subject">Description</label>
             </div>
             <div className="col-75">
               <textarea
-                onChange={this.descriptionHandleChange}
-                id="subject"
-                name="firstname"
+                onChange={this.onChangeHandler}
+                name="description"
                 placeholder="Your description.."
               />
             </div>
@@ -308,4 +273,4 @@ class Provider extends Component {
   }
 }
 
-export default Provider;
+export default ProviderDashboard;

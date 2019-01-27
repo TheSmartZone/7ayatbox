@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import "./Reservation.css";
+import "./ServiceItemDetails.css";
 
 class ServiceItemDetails extends Component {
   //add to cart

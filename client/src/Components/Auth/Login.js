@@ -35,7 +35,7 @@ class Login extends Component {
           this.props.history.goBack();
         } else {
           this.props.history.push({
-            pathname: "/provider",
+            pathname: "/dashboard",
             query: response.id
           });
           $("#cart-nav").hide();
