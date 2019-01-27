@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const user = require("../../DataBase/user");
+const user = require("../../DataBase/User");
 const passport = require("passport");
 //handling user signup route
 router.route("/signup").post(function(req, res) {
