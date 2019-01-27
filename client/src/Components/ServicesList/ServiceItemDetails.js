@@ -1,47 +1,48 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./ServiceItemDetails.css";
-
+import StarRatings from "react-star-ratings";
 class ServiceItemDetails extends Component {
   //add to cart
   addToCart = result => {
     this.props.incrementCounter();
-    this.props.saveResult(this.props.location.query);
+    this.props.saveResult(this.props.service);
   };
 
   render() {
+    console.log(this.props.service);
     return (
       <div>
-        <div className="reservation-background">
-          <div className="container-reservation">
-            <div className="row title-reservation">
-              <div className="col-7">
-                <h2>{this.props.location.query.title}</h2>
-              </div>
-            </div>
+        <img src={this.props.service.imageUrl} className="service-img" alt="" />
 
-            <div className="row">
-              <div className="col-6 title-reservation">
-                price $<mark>{this.props.location.query.price}</mark>
-              </div>
-            </div>
-
-            <div className="row">
-              <div className="col-6 title-reservation">
-                Location <mark>{this.props.location.query.location}</mark>
-              </div>
-            </div>
-
-            <div className="row">
-              <div className="col-6 title-reservation">
-                Rate <mark>{this.props.location.query.rate}</mark>
-              </div>
+        <div className="row service-modal">
+          <div className="col-md-8">
+            <h2 className="serviceTitle ">{this.props.service.title}</h2>
+            <h4>price $ {this.props.service.price}</h4>
+          </div>
+          <div className="col-md-4">
+            <div className="ratingService">
+              <StarRatings
+                rating={this.props.service.rate}
+                starRatedColor="rgb(153, 17, 69)"
+                numberOfStars={5}
+                name="rating"
+                starDimension="30px"
+                starSpacing="5px"
+              />
+              <h4 className="service-h4">
+                Location {this.props.service.location}
+              </h4>
             </div>
           </div>
         </div>
-        <div className="row description">
-          <div className="col-12">{this.props.location.query.description}</div>
+
+        <div className="serviceDescription ">
+          {this.props.service.description}
         </div>
+        <button onClick={this.addToCart} className="addToCartService">
+          Add To Cart
+        </button>
       </div>
     );
   }
