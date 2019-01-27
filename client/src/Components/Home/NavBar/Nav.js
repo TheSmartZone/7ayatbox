@@ -57,7 +57,6 @@ class Nav extends Component {
   }
 
   render() {
-    console.log("2", this.props.user);
     return (
       <div>
         <div className="container-fluid headerNav-container">
