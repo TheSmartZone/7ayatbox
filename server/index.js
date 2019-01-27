@@ -31,7 +31,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use((req, res, next) => {
-  console.log("req.session", req.session);
+  // console.log("req.session", req.session);
   return next();
 });
 app.use("/user", userRouter);

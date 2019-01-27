@@ -3,15 +3,12 @@ const router = express.Router();
 const provider = require("../../DataBase/provider");
 const service = require("../../DataBase/Services");
 
-router.use(function(res, req, next) {
-  next();
-});
 router.route("/signup").post(function(req, res) {
   var body = req.body;
   var email = body.email;
   var password = body.password;
   var name = body.name;
-  provider.checkProvider(email, function(result) {
+  provider.checkProvider(email).then(result => {
     if (result.length > 0) {
       res.status(500).send("Username already exists");
     } else {
@@ -38,28 +35,29 @@ router.route("/addService").post(function(req, res) {
   var capicity = body.capicity;
   var location = body.location;
 
-  service.addService(
-    capicity,
-    description,
-    imageUrl,
-    location,
-    price,
-    rate,
-    title,
-    providerId,
-    categoryId,
-    function(err, result) {
-      if (err) console.log("err adding service");
+  service
+    .addService(
+      capicity,
+      description,
+      imageUrl,
+      location,
+      price,
+      rate,
+      title,
+      providerId,
+      categoryId
+    )
+    .then(result => {
       res.send(true);
-    }
-  );
+    })
+    .catch((msg, err) => {
+      console.log(msg, err);
+    });
 });
 
 router.route("/getProviderServices").post(function(req, res) {
   var body = req.body;
   var providerId = body.providerId;
-  console.log("my provider router");
-
   service.getProviderServices(
     providerId,
 
@@ -70,30 +68,20 @@ router.route("/getProviderServices").post(function(req, res) {
     }
   );
 });
-// router.post(
-//   "/login",
-//   passport.authenticate("local", {
-//     failureRedirect: "/login",
-//     successRedirect: "/profile"
-//   }),
-//   function(req, res) {
-//     console.log("yoooooooo");
-//     res.send("hey");
-//   }
-// );
 
 router.route("/login").post(function(req, res) {
-  provider.checkPassword(req.body.email, req.body.password, function(
-    result,
-    user,
-    err
-  ) {
-    if (result) {
-      res.status(200).send(result);
-    } else {
-      res.status(500).send("login error");
-    }
-  });
+  provider
+    .checkPassword(req.body.email, req.body.password)
+    .then(result => {
+      if (result) {
+        res.status(200).send(result);
+      } else {
+        res.status(500).send("login error");
+      }
+    })
+    .catch((msg, err) => {
+      console.log(msg, err);
+    });
 });
 
 module.exports = router;
