@@ -1,6 +1,6 @@
 const intialState = {
   counter: 0,
-  result2: [],
+  cartItems: [],
   user: {},
   cardReservation: {}
 };
@@ -15,16 +15,16 @@ const reducer = (state = intialState, action) => {
     return {
       ...state,
       counter: 0,
-      result2: []
+      cartItems: []
     };
   } else if (action.type === "SAVE") {
-    var array = state.result2;
+    var array = state.cartItems;
     array.push(action.value);
     return {
       ...state,
-      result2: array
+      cartItems: array
     };
-  } else if (action.type === "logedin") {
+  } else if (action.type === "loggedIn") {
     return {
       ...state,
       user: action.value

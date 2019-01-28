@@ -1,12 +1,10 @@
 import React, { Component } from "react";
-import "../../ServicesList/ServicesList.css";
-import ServicesListCard from "../../ServicesList/ServicesListCard";
-import $ from "jquery";
-
+import "../ServicesList/ServicesList.css";
+import ServicesListCard from "../ServicesList/ServicesListCard";
+import axios from "axios";
 class BudgetResult extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       result: [],
       halls: [],
@@ -18,9 +16,9 @@ class BudgetResult extends Component {
     };
   }
   componentDidMount() {
-    $.ajax({
+    axios({
+      method: "post",
       url: "/services/Recommendation",
-      type: "POST",
       data: {
         hallPrice: this.props.location.query.halls,
         zafehPrice: this.props.location.query.zafehs,
@@ -28,15 +26,14 @@ class BudgetResult extends Component {
         beautyCentersPrice: this.props.location.query.beautys,
         flowersPrice: this.props.location.query.flowers,
         carsPrice: this.props.location.query.cars
-      },
-      success: data => {
-        this.filterCategoryHandler(data);
-        // this.setState({ result: data });
-      },
-      error: err => {
-        console.log("ERROR");
       }
-    });
+    })
+      .then(({ data }) => {
+        this.filterCategoryHandler(data);
+      })
+      .catch(error => {
+        console.log("Recommendation ERROR", error);
+      });
   }
   //format the results in arrays to be displayed under corresponding sections in UI
   filterCategoryHandler = data => {

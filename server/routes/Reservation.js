@@ -12,21 +12,28 @@ router.route("/addReservation").post(function(req, res) {
   var providerId = body.providerID;
   var cartDetails = body.cartDetails;
 
-  Reservation.addReservation(userID, providerId, function(err, result) {
-    if (err) console.log("err adding reservation");
-    Reservation.addReservationDetails(cartDetails, result.insertId, function() {
-      res.send(true);
+  Reservation.addReservation(userID, providerId)
+    .then(result => {
+      Reservation.addReservationDetails(
+        cartDetails,
+        result.insertId,
+        function() {
+          res.send(true);
+        }
+      );
+    })
+    .catch((msg, err) => {
+      console.log(msg, err);
     });
-  });
 });
 router.route("/userReservation").get(function(req, res) {
-  Reservation.getUserReservationDetails(req.query.userId, function(
-    err,
-    result
-  ) {
-    if (err) console.log("err getting user reservation", err);
-    res.json(result);
-  });
+  Reservation.getUserReservationDetails(req.query.userId)
+    .then(result => {
+      res.json(result);
+    })
+    .catch((msg, err) => {
+      console.log(msg, err);
+    });
 });
 
 module.exports = router;

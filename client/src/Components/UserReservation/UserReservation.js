@@ -1,29 +1,26 @@
 import React, { Component } from "react";
 import ListCard from "./ListCard";
-
 import { connect } from "react-redux";
-import $ from "jquery";
+import axios from "axios";
 class UserReservation extends Component {
   constructor(props) {
     super(props);
     this.state = { result: [] };
   }
   componentDidMount() {
-  
     this.getAllServices();
   }
   getAllServices = () => {
-    $.ajax({
-      url: `/reservation/userReservation?userId=${this.props.user.id}`,
-      type: "GET",
-      success: data => {
+    axios({
+      method: "get",
+      url: `/reservation/userReservation?userId=${this.props.user.id}`
+    })
+      .then(({ data }) => {
         this.setState({ result: data });
-        
-      },
-      error: err => {
+      })
+      .catch(err => {
         console.log("ERROR");
-      }
-    });
+      });
   };
 
   render() {
@@ -33,12 +30,11 @@ class UserReservation extends Component {
         <div className="container">
           <h1>My Reservation</h1>
           <hr className="hr-header" />
-     
-            {this.state.result.map((result, index) => {
-              return <ListCard key={index} result={result} />;
-            })}
-          </div>
-  
+
+          {this.state.result.map((result, index) => {
+            return <ListCard key={index} result={result} />;
+          })}
+        </div>
       );
     }
   }

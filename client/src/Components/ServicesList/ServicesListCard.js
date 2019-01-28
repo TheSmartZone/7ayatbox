@@ -1,11 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import "./ServicesList.css";
 import SweetAlert from "react-bootstrap-sweetalert";
-import $ from "jquery";
 
-class ViewCategoriesCard extends React.Component {
+class ServicesListCard extends React.Component {
   state = {
     qty: 0,
     result: "",
@@ -14,7 +12,6 @@ class ViewCategoriesCard extends React.Component {
 
   handleSubmit = () => {
     this.setState({ show: true });
-    console.log("my service cart result", this.props.result);
     this.props.incrementCounter();
     this.props.saveResult(this.props.result);
   };
@@ -43,11 +40,9 @@ class ViewCategoriesCard extends React.Component {
                 success
                 title="the service added to your cart"
                 onConfirm={() => {
-                  console.log("confirm");
                   this.setState({ show: false });
                 }}
                 onCancel={() => {
-                  console.log("cancel");
                   this.setState({ show: false });
                 }}
                 onEscapeKey={() => this.setState({ show: false })}
@@ -55,14 +50,14 @@ class ViewCategoriesCard extends React.Component {
               />
             </div>
 
-            <Link
-              to={{
-                pathname: "/reservation",
-                query: this.props.result
+            <button
+              className="cart-details"
+              onClick={() => {
+                this.props.handleDetailsClick(this.props.result);
               }}
             >
-              <button className="cart-details">Show Details</button>
-            </Link>
+              Show Details
+            </button>
           </div>
         </div>
       </div>
@@ -85,4 +80,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ViewCategoriesCard);
+)(ServicesListCard);

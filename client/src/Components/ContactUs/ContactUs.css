@@ -1,44 +1,44 @@
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 /*Google font integration*/
-@import url('https://fonts.googleapis.com/css?family=Roboto');
-
+@import url("https://fonts.googleapis.com/css?family=Roboto");
 
 /* *****Contact Us Dev***** */
 .contact-jumbotron {
-    background: rgb(154, 17, 71);
-    color: rgb(255, 254, 254);
-    border-radius: 0px;
-    }
-    .contact-jumbotron-sm { 
-        padding-top: 24px;
-        padding-bottom: 24px;
-        margin-top: 7%;
-        /* margin-left: 20%; */
-        margin-right: 34%;
+  background: rgb(154, 17, 71);
+  color: rgb(255, 254, 254);
+  border-radius: 0px;
+  height: 50px;
+  text-align: center;
 }
-    .jumbotron small {
-    color: rgb(138, 41, 41);
-    }
-    .contact-h1 small {
-    font-size: 24px;
-    color: rgb(32, 32, 32);
-    font-weight: bold;
-    }
-    
-    #btnContactUs {
-        background-color: rgb(154, 17, 71);
-        width: 200px;
-    }
-
+.contact-jumbotron-sm {
+  padding-top: 24px;
+  padding-bottom: 24px;
+  margin-top: 7%;
+  /* margin-left: 20%; */
+  margin-right: 34%;
+}
+.jumbotron small {
+  color: rgb(138, 41, 41);
+}
+.contact-h1 {
+  font-size: 24px;
+  color: white;
+  font-weight: bold;
+  padding-top: 12px;
+}
 
 /* *****End Of Contact Us Dev***** */
 
 #gMap {
-    position: relative;
-    width: 34%;
-    height: 403px;
-    background-color: #CCC;
-    /* margin: -22.1% 0% 0 66.01%; */
+  position: relative;
+  margin-top: 20px;
+  height: 560px;
+  background-color: #ccc;
+  /* margin: -22.1% 0% 0 66.01%; */
 }
-
-    
+.contactus-btn {
+  right: 0px;
+  background-color: rgb(154, 17, 71);
+  width: 200px;
+  text-align: center;
+}

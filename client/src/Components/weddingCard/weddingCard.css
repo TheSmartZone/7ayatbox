@@ -1,138 +1,133 @@
 .template {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    margin: auto;
-    text-align: center;
-    font-family: arial;
-    padding: 10px;
-    display: inline-flex;
-    width: 100%;
-    height: 100%;
-  
-  }
-  .WeddingCard span{
-    position: relative;
-    color: #f999ad;
-    font-size: 50px;
-  }
-  .WeddingCard h2{
-    font-family: 'Playfair Display', serif;
-    text-transform: uppercase;
-    font-weight: 1000;
-  }
-  .template img{
-      height: 100%
-  }
-
-
-.WeddingCard{
-    color:#766959;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    background-image: url(../Home/imgs/first.jpg), url(../Home/imgs/secound.jpg) , url(../Home/imgs/third.jpg), url(../Home/imgs/forth.jpg);
- 
-width:600px;
-height: 750px;
-background-size: 300px;
-background-position: top right ,top left,bottom right,bottom left; 
-background-repeat: no-repeat;
-
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-
-
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+  padding: 10px;
+  display: inline-flex;
+  width: 100%;
+  height: 100%;
 }
-.templates-container{
-    margin-top: 120px;
+.WeddingCard span {
+  position: relative;
+  color: #f999ad;
+  font-size: 50px;
 }
-.weddingCard-date{
-    font-family: 'Dancing Script', cursive;
-    font-size: 30px;
-    
+.WeddingCard h2 {
+  font-family: "Playfair Display", serif;
+  text-transform: uppercase;
+  font-weight: 1000;
 }
-.WeddingCard h3{
-    font-family: 'Dancing Script', cursive;
+.template img {
+  height: 100%;
 }
 
-.small-card{
-    -ms-transform: rotate(46deg); 
-    -webkit-transform: rotate(46deg); 
-    transform: rotate(46deg); 
-    margin-bottom: 110px;
-    color:#766959;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    background-image: url(../Home/imgs/first.jpg), url(../Home/imgs/secound.jpg) , url(../Home/imgs/third.jpg), url(../Home/imgs/forth.jpg);
- 
-width:250px;
-height: 250px;
-background-size: 100px;
-background-position: top right ,top left,bottom right,bottom left; 
-background-repeat: no-repeat;
+.WeddingCard {
+  color: #766959;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-image: url(../Home/imgs/first.jpg), url(../Home/imgs/secound.jpg),
+    url(../Home/imgs/third.jpg), url(../Home/imgs/forth.jpg);
 
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
+  width: 600px;
+  height: 750px;
+  background-size: 300px;
+  background-position: top right, top left, bottom right, bottom left;
+  background-repeat: no-repeat;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.templates-container {
+  margin-top: 120px;
+}
+.weddingCard-date {
+  font-family: "Dancing Script", cursive;
+  font-size: 30px;
+}
+.WeddingCard h3 {
+  font-family: "Dancing Script", cursive;
 }
 
-.weddingCard-date-small{
-    font-family: 'Dancing Script', cursive;
-    font-size: 10px;
+.small-card {
+  -ms-transform: rotate(46deg);
+  -webkit-transform: rotate(46deg);
+  transform: rotate(46deg);
+  margin-bottom: 110px;
+  color: #766959;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-image: url(../Home/imgs/first.jpg), url(../Home/imgs/secound.jpg),
+    url(../Home/imgs/third.jpg), url(../Home/imgs/forth.jpg);
+
+  width: 250px;
+  height: 250px;
+  background-size: 100px;
+  background-position: top right, top left, bottom right, bottom left;
+  background-repeat: no-repeat;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.small-card h3{
-    font-family: 'Dancing Script', cursive;
-    font-size: 10px;
+.weddingCard-date-small {
+  font-family: "Dancing Script", cursive;
+  font-size: 10px;
 }
 
-.small-card h2{
-    font-family: 'Playfair Display', serif;
-    text-transform: uppercase;
-    font-weight: 500;
-    font-size:15px;
-  }
-  .small-card p{
-      font-size: 8px
-  }
-
-
-  
-  .small-card2{
-    -ms-transform: rotate(-69deg); 
-    -webkit-transform: rotate(-69deg); 
-    transform: rotate(-69deg); 
-    margin-bottom: 50px;
-    color:#766959;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    background-image: url(../Home/imgs/first.jpg), url(../Home/imgs/secound.jpg) , url(../Home/imgs/third.jpg), url(../Home/imgs/forth.jpg);
- 
-width:250px;
-height: 250px;
-background-size: 100px;
-background-position: top right ,top left,bottom right,bottom left; 
-background-repeat: no-repeat;
-
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
+.small-card h3 {
+  font-family: "Dancing Script", cursive;
+  font-size: 10px;
 }
 
-.small-card2 h3{
-    font-family: 'Dancing Script', cursive;
-    font-size: 10px;
+.small-card h2 {
+  font-family: "Playfair Display", serif;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 15px;
+}
+.small-card p {
+  font-size: 8px;
 }
 
-.small-card2 h2{
-    font-family: 'Playfair Display', serif;
-    text-transform: uppercase;
-    font-weight: 500;
-    font-size:15px;
-  }
-  .small-card2 p{
-      font-size: 8px
-  }
-  #btnPdf{
-      background-color: #f999ad;
-   
-  }
+.small-card2 {
+  -ms-transform: rotate(-69deg);
+  -webkit-transform: rotate(-69deg);
+  transform: rotate(-69deg);
+  margin-bottom: 50px;
+  color: #766959;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-image: url(../Home/imgs/first.jpg), url(../Home/imgs/secound.jpg),
+    url(../Home/imgs/third.jpg), url(../Home/imgs/forth.jpg);
+
+  width: 250px;
+  height: 250px;
+  background-size: 100px;
+  background-position: top right, top left, bottom right, bottom left;
+  background-repeat: no-repeat;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.small-card2 h3 {
+  font-family: "Dancing Script", cursive;
+  font-size: 10px;
+}
+
+.small-card2 h2 {
+  font-family: "Playfair Display", serif;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 15px;
+}
+.small-card2 p {
+  font-size: 8px;
+}
+#btnPdf {
+  background-color: #f999ad;
+}

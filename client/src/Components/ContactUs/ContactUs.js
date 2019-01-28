@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./ContactUs.css";
-import $ from "jquery";
+import axios from "axios";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 
 class ContactUs extends Component {
@@ -16,34 +16,25 @@ class ContactUs extends Component {
     };
   }
 
-  handleNameChange = event => {
-    this.setState({ name: event.target.value });
-  };
-
-  handlePhoneChange = event => {
-    this.setState({ phone: event.target.value });
-  };
-
-  handleMessageChange = event => {
-    this.setState({ message: event.target.value });
+  onchangeHandler = event => {
+    this.setState({ [event.target.name]: event.target.value });
   };
   handleSaveMessage = event => {
-    $.ajax({
-      url: `/contactus/submit`,
-      type: "POST",
+    axios({
+      method: "post",
+      url: "/contactus/submit",
       data: {
         name: this.state.name,
         phone: this.state.phone,
         message: this.state.message
-      },
-      success: data => {
-        alert("SUCCESS");
-        console.log("SUCCESS", data);
-      },
-      error: err => {
-        console.log("ERROR", err);
       }
-    });
+    })
+      .then(response => {
+        alert("SUCCESS");
+      })
+      .catch(error => {
+        console.log("contactUs ERROR", error);
+      });
   };
 
   onMarkerClick = (props, marker, e) =>
@@ -63,79 +54,69 @@ class ContactUs extends Component {
   };
 
   render() {
+    const style = {
+      width: "100%"
+    };
     return (
       //start div
       <div className="container">
-        <link
-          href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
-          rel="stylesheet"
-          id="bootstrap-css"
-        />
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js" />
-        <script src="//code.jquery.com/jquery-1.11.1.min.js" />
-        <link
-          rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-        />
-
-        <div class="row">
+        <div className="row">
           {/* Contact Us Form */}
-          <div class="col-md-6">
-            <div class="contact-jumbotron contact-jumbotron-sm">
-              <div class="">
-                <div>
-                  <h1 class="contact-h1">
-                    Feel Free To Contact Us <small />
-                  </h1>
-                </div>
-              </div>
+          <div className="col-md-6">
+            <div className="contact-jumbotron">
+              <h1 className="contact-h1">
+                Feel Free To Contact Us <small />
+              </h1>
             </div>
 
-            <div class="contact-container2">
-              <div class="well well-sm">
-                <form onSubmit={this.handleSaveMessage} class="contact-form">
-                  <div class="form-group">
-                    <label for="name">Name</label>
+            <div className="contact-container2">
+              <div className="well well-sm">
+                <form
+                  onSubmit={this.handleSaveMessage}
+                  className="contact-form"
+                >
+                  <div className="form-group">
+                    <label htmlFor="name">Name</label>
                     <input
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       name="name"
                       placeholder="Enter name"
                       required="required"
-                      onChange={this.handleNameChange}
+                      onChange={this.onchangeHandler}
                     />
                   </div>
 
-                  <div class="form-group">
-                    <label for="subject">Phone</label>
+                  <div className="form-group">
+                    <label htmlFor="subject">Phone</label>
                     <input
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       name="phone"
                       placeholder="Enter phone"
                       required="required"
-                      onChange={this.handlePhoneChange}
+                      onChange={this.onchangeHandler}
                     />
                   </div>
 
-                  <div class="form-group">
-                    <label for="name">Message</label>
+                  <div className="form-group">
+                    <label htmlFor="name">Message</label>
                     <textarea
                       name="message"
                       id="message"
-                      class="form-control"
+                      className="form-control"
                       rows="9"
                       cols="25"
                       required="required"
                       placeholder="Message"
-                      onChange={this.handleMessageChange}
+                      onChange={this.onchangeHandler}
                     />
                   </div>
 
                   <div>
                     <button
                       type="submit"
-                      class="btn btn-primary pull-right"
+                      className="btn btn-primary contactus-btn"
                       id="btnContactUs"
                     >
                       Send Message
@@ -148,10 +129,11 @@ class ContactUs extends Component {
           {/* End Of Contact Us Form */}
 
           {/* Google Map */}
-          <div class="col-md-6">
+          <div className="col-md-6">
             <div id="gMap">
               <Map
                 google={this.props.google}
+                style={style}
                 zoom={15}
                 initialCenter={{ lat: 31.986617, lng: 35.83777 }}
               >

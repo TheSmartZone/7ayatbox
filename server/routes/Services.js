@@ -7,36 +7,42 @@ router.use(function(res, req, next) {
 });
 //getting categories based on the category provided
 router.route("/:category").get(function(req, res) {
-  services.getAllServices(req.params.category, function(result) {
-    res.json(result);
-  });
+  services
+    .getAllServices(req.params.category)
+    .then(result => {
+      res.json(result);
+    })
+    .catch((msg, err) => {
+      console.log(msg, err);
+    });
 });
 router.route("/Recommendation").post(function(req, res) {
-  services.getRecommendedServices(
-    req.body.hallPrice,
-    req.body.zafehPrice,
-    req.body.djPrice,
-    req.body.beautyCentersPrice,
-    req.body.flowersPrice,
-    req.body.carsPrice,
-    function(result) {
+  services
+    .getRecommendedServices(
+      req.body.hallPrice,
+      req.body.zafehPrice,
+      req.body.djPrice,
+      req.body.beautyCentersPrice,
+      req.body.flowersPrice,
+      req.body.carsPrice
+    )
+    .then(result => {
       res.json(result);
-    }
-  );
+    })
+    .catch((msg, err) => {
+      console.log(msg, err);
+    });
 });
 router.route("/deleteService").post(function(req, res) {
   var body = req.body;
   var id = body.id;
-console.log("my provider router")
-
-  service.deleteService(
-    id,
-
-    function(err, result) {
-      console.log("my result",result)
-      if (err) console.log("err selecting provider services");
+  service
+    .deleteService(id)
+    .then(result => {
       res.send(result);
-    }
-  );
+    })
+    .catch((msg, err) => {
+      console.log(msg, err);
+    });
 });
 module.exports = router;

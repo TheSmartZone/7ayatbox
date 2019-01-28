@@ -17,6 +17,25 @@ const checkUser = (email, cb) => {
     });
   });
 };
+//return name and email for the provided Id
+const findUserById = id => {
+  console.log("id", id);
+  return new Promise((resolve, reject) => {
+    pool.getConnection(function(err, con) {
+      if (err) reject(err);
+
+      con.query(`SELECT id,name,email FROM users Where id= ("${id}")`, function(
+        err,
+        results
+      ) {
+        if (err) reject(err);
+        //results is the returned array of objects
+        resolve(results[0]);
+        con.release();
+      });
+    });
+  });
+};
 //creating new users in db
 const addUser = (name, email, password, cb) => {
   hashPassword(password, function(err, hashedPassword) {
@@ -67,3 +86,4 @@ const checkPassword = (email, password, cb) => {
 module.exports.checkUser = checkUser;
 module.exports.checkPassword = checkPassword;
 module.exports.addUser = addUser;
+module.exports.findUserById = findUserById;
