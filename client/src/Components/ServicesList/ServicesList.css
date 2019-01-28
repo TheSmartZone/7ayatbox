@@ -87,7 +87,7 @@ a:hover {
 .main {
   margin: 40px;
 }
-.container h1 {
+.container .service-list-h1 {
   color: #991145;
   display: flex;
   justify-content: center;

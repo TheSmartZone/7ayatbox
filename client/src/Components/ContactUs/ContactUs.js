@@ -54,30 +54,32 @@ class ContactUs extends Component {
   };
 
   render() {
+    const style = {
+      width: "100%"
+    };
     return (
       //start div
       <div className="container">
-        <div class="row">
+        <div className="row">
           {/* Contact Us Form */}
-          <div class="col-md-6">
-            <div class="contact-jumbotron contact-jumbotron-sm">
-              <div class="">
-                <div>
-                  <h1 class="contact-h1">
-                    Feel Free To Contact Us <small />
-                  </h1>
-                </div>
-              </div>
+          <div className="col-md-6">
+            <div className="contact-jumbotron">
+              <h1 className="contact-h1">
+                Feel Free To Contact Us <small />
+              </h1>
             </div>
 
-            <div class="contact-container2">
-              <div class="well well-sm">
-                <form onSubmit={this.handleSaveMessage} class="contact-form">
-                  <div class="form-group">
-                    <label for="name">Name</label>
+            <div className="contact-container2">
+              <div className="well well-sm">
+                <form
+                  onSubmit={this.handleSaveMessage}
+                  className="contact-form"
+                >
+                  <div className="form-group">
+                    <label htmlFor="name">Name</label>
                     <input
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       name="name"
                       placeholder="Enter name"
                       required="required"
@@ -85,11 +87,11 @@ class ContactUs extends Component {
                     />
                   </div>
 
-                  <div class="form-group">
-                    <label for="subject">Phone</label>
+                  <div className="form-group">
+                    <label htmlFor="subject">Phone</label>
                     <input
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       name="phone"
                       placeholder="Enter phone"
                       required="required"
@@ -97,12 +99,12 @@ class ContactUs extends Component {
                     />
                   </div>
 
-                  <div class="form-group">
-                    <label for="name">Message</label>
+                  <div className="form-group">
+                    <label htmlFor="name">Message</label>
                     <textarea
                       name="message"
                       id="message"
-                      class="form-control"
+                      className="form-control"
                       rows="9"
                       cols="25"
                       required="required"
@@ -114,7 +116,7 @@ class ContactUs extends Component {
                   <div>
                     <button
                       type="submit"
-                      class="btn btn-primary pull-right"
+                      className="btn btn-primary contactus-btn"
                       id="btnContactUs"
                     >
                       Send Message
@@ -127,10 +129,11 @@ class ContactUs extends Component {
           {/* End Of Contact Us Form */}
 
           {/* Google Map */}
-          <div class="col-md-6">
+          <div className="col-md-6">
             <div id="gMap">
               <Map
                 google={this.props.google}
+                style={style}
                 zoom={15}
                 initialCenter={{ lat: 31.986617, lng: 35.83777 }}
               >

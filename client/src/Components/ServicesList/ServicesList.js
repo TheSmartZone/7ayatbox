@@ -50,7 +50,7 @@ class ServicesList extends Component {
   render() {
     return (
       <div className="container">
-        <h1>{this.props.location.query}</h1>
+        <h1 className="service-list-h1">{this.props.location.query}</h1>
         <hr className="hr-header" />
         <div className="row">
           {this.state.result.map((result, index) => {

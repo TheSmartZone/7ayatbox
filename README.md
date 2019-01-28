@@ -32,6 +32,8 @@
 
 ## Development
 
+heuroko: (https://hayatbox.herokuapp.com/)
+
 ### Installing Dependencies
 
 From within the root directory:
@@ -47,10 +49,12 @@ to run the client and the server in terminal run
 
 ### Roadmap
 
-View the project roadmap [here](LINK_TO_PROJECT_ISSUES)
+View the project roadmap [here](https://waffle.io/TheSmartZone/7ayatbox)
 
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
 
-![](image/Screenshot.png)
+## Demo
+
+[![https://www.youtube.com/watch?v=https://youtu.be/WPVs7w1xmZY](image/Screenshot.png)](https://www.youtube.com/watch?v=https://youtu.be/WPVs7w1xmZY)
