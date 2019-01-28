@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const provider = require("../../DataBase/provider");
+const provider = require("../../DataBase/Provider");
 const service = require("../../DataBase/Services");
 
 router.route("/signup").post(function(req, res) {
