@@ -3,7 +3,7 @@ const session = require("express-session");
 const bodyParser = require("body-parser");
 const path = require("path");
 const app = express();
-const userRouter = require("./routes/User.js");
+//const userRouter = require("./routes/User.js");
 const providerRouter = require("./routes/Provider.js");
 const servicesRouter = require("./routes/Services.js");
 const reservationRouter = require("./routes/Reservation.js");
@@ -34,7 +34,7 @@ app.use((req, res, next) => {
   // console.log("req.session", req.session);
   return next();
 });
-app.use("/user", userRouter);
+//app.use("/user", userRouter);
 app.use("/provider", providerRouter);
 app.use("/services", servicesRouter);
 app.use("/Reservation", reservationRouter);
